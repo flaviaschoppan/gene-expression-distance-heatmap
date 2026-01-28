@@ -33,23 +33,23 @@ Many multivariate methods (PCA, clustering, UMAP, etc.) are based on distances b
 
 However, in practice:
 
-    • Distances are rarely inspected directly
-    • Problems like batch effects, outliers, or scale issues can remain hidden
-    • Clustering or PCA can look “clean” while being numerically misleading
+ • Distances are rarely inspected directly
+ • Problems like batch effects, outliers, or scale issues can remain hidden
+ • Clustering or PCA can look “clean” while being numerically misleading
 
 This project makes the distance structure itself a first-class object of analysis by explicitly exposing:
 
-    • Which samples are close to each other
-    • Which samples are far apart
-    • Whether groups actually exist in the raw geometry of the data
+ • Which samples are close to each other
+ • Which samples are far apart
+ • Whether groups actually exist in the raw geometry of the data
 
 ---
 
 ## What this project is NOT
 
-    • This is not a differential expression analysis
-    • This is not a clustering pipeline
-    • This is not a dimensionality reduction pipeline
+ • This is not a differential expression analysis
+ • This is not a clustering pipeline
+ • This is not a dimensionality reduction pipeline
 
 It is strictly a distance computation and visualization step that sits before those analyses.
 
@@ -95,8 +95,9 @@ outputs/matrices/sample_distance_matrix.csv
 outputs/figures/distance_heatmap.png
 ```
 
-• The CSV contains the full pairwise distance matrix between samples
-• The PNG is a heatmap visualization of that matrix
+ • The CSV contains the full pairwise distance matrix between samples
+
+ • The PNG is a heatmap visualization of that matrix
 
 ---
 
@@ -115,10 +116,10 @@ All outputs will be written to the ```outputs/``` folder.
 
 All steps in this pipeline are:
 
-    • Explicit
-    • Deterministic
-    • Scripted
-    • And produce versionable artifacts
+ • Explicit
+ • Deterministic
+ • Scripted
+ • And produce versionable artifacts
 
 The pipeline is fully deterministic and produces explicit, versionable artifacts, making every transformation step auditable and reproducible.
 
@@ -128,9 +129,9 @@ The pipeline is fully deterministic and produces explicit, versionable artifacts
 
 The data used in this repository are synthetic and intended solely to demonstrate:
 
-    • The numerical behavior of the pipeline
-    • The structure of the workflow
-    • The geometry of sample relationships
+ • The numerical behavior of the pipeline
+ • The structure of the workflow
+ • The geometry of sample relationships
 
 They are not intended for biological interpretation.
 
