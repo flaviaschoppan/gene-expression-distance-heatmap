@@ -1,142 +1,74 @@
-# Gene Expression Distance and Heatmap Pipeline
+# Gene Expression Distance Visualization
+## Method-focused exploration of sample-to-sample distance geometry in gene expression data
 
 ---
 
 ## Overview
 
-This repository implements a minimal, explicit, and reproducible pipeline to compute and visualize sample-to-sample distances in gene expression data.
+This repository presents a methodological exploration of sample-to-sample distance structure in gene expression data.
 
-The pipeline formalizes a critical exploratory step in transcriptomics: making the geometric relationships between samples explicit before clustering or dimensionality reduction.
-
-This repository is designed as a didactic and structural example of the distance exploration stage that precedes clustering and dimensionality reduction in gene expression analysis pipelines.
-
-
-> How similar or different are the samples, numerically, in the full expression space?
-
+The objective is to make the geometry of relationships between samples explicit, before any clustering, dimensionality reduction, or downstream modeling is attempted. Rather than producing analytical decisions, this project focuses on exposing distance patterns that are often implicitly assumed but rarely inspected directly.
 
 ---
 
-## What this pipeline does
+## Conceptual Focus
 
-1. Loads a raw gene expression count matrix
-2. Normalizes counts to CPM (Counts Per Million)
-3. Applies log2(x + 1) transformation
-4. Computes a sample-to-sample distance matrix
-5. Saves the distance matrix as a versioned artifact
-6. Generates a heatmap visualization of the distance matrix
+Many multivariate methods commonly applied in transcriptomics rely on distances between samples.
+This project treats the distance matrix itself as an exploratory object, allowing inspection of:
 
----
+- relative similarity and dissimilarity between samples,
+- global distance structure across the dataset,
+- potential distortions related to scale or transformation choices.
 
-## Why this matters
-
-Many multivariate methods (PCA, clustering, UMAP, etc.) are based on distances between samples.
-
-However, in practice:
-
- • Distances are rarely inspected directly
- • Problems like batch effects, outliers, or scale issues can remain hidden
- • Clustering or PCA can look “clean” while being numerically misleading
-
-This project makes the distance structure itself a first-class object of analysis by explicitly exposing:
-
- • Which samples are close to each other
- • Which samples are far apart
- • Whether groups actually exist in the raw geometry of the data
+Visualization is used as an inspection tool to support analytical reasoning, not as a decision mechanism.
 
 ---
 
-## What this project is NOT
+## Data
 
- • This is not a differential expression analysis
- • This is not a clustering pipeline
- • This is not a dimensionality reduction pipeline
+- Data type: gene expression count matrices
+- Source: synthetically generated data
 
-It is strictly a distance computation and visualization step that sits before those analyses.
-
----
-
-## Conceptual focus
-
-> Before projecting or clustering data, you should understand the geometry of the space you are working in.
-
----
-
-## Project structure
-
-```text
-gene-expression-distance-heatmap/
-├── data/
-│   └── raw/
-│       └── counts.csv
-├── pipeline/
-│   ├── __init__.py
-│   ├── io.py
-│   ├── normalization.py
-│   ├── transform.py
-│   ├── distance.py
-│   └── plots.py
-├── outputs/
-│   ├── matrices/
-│   └── figures/
-├── run_pipeline.py
-├── requirements.txt
-├── README.md
-└── LICENSE
-```
-
----
-
-## Outputs
-
-The pipeline produces the following versionable artifacts:
-
-```text
-outputs/matrices/sample_distance_matrix.csv
-outputs/figures/distance_heatmap.png
-```
-
- • The CSV contains the full pairwise distance matrix between samples
-
- • The PNG is a heatmap visualization of that matrix
-
----
-
-## How to run
-
-1. Install dependencies: ```pip install -r requirements.txt```
-
-2. Run the pipeline: ```python run_pipeline.py```
-
-
-All outputs will be written to the ```outputs/``` folder.
-
----
-
-## Reproducibility
-
-All steps in this pipeline are:
-
- • Explicit
- • Deterministic
- • Scripted
- • And produce versionable artifacts
-
-The pipeline is fully deterministic and produces explicit, versionable artifacts, making every transformation step auditable and reproducible.
-
----
-
-## Data note
-
-The data used in this repository are synthetic and intended solely to demonstrate:
-
- • The numerical behavior of the pipeline
- • The structure of the workflow
- • The geometry of sample relationships
-
+The data included in this repository are intended solely to illustrate numerical behavior and distance geometry.
 They are not intended for biological interpretation.
+
+---
+
+## Representative Outputs
+
+The repository includes representative outputs that support inspection of distance structure:
+- a sample-to-sample distance matrix (as a numerical artifact),
+- a heatmap visualization illustrating relative distances between samples.
+
+These outputs are meant to aid human inspection and reasoning, not to produce automated conclusions.
+
+---
+
+## Scope
+
+This repository is intended for:
+- exploratory inspection of distance geometry,
+- methodological reasoning about sample relationships,
+- visualization of similarity structures prior to downstream analysis.
+
+It is not intended for:
+- clustering or group discovery,
+- dimensionality reduction (e.g., PCA, UMAP),
+- statistical inference,
+- biological interpretation,
+- production-grade analytical workflows.
+
+---
+
+## Implementation Notes
+
+The implementation included here is deliberately explicit and minimal, reflecting a didactic emphasis on analytical structure rather than optimization or automation.
+
+Implementation details are shown to support transparency of reasoning, not to define a reusable analytical product.
 
 ---
 
 ## License
 
-This project is released under the MIT License.
+This repository is released under the MIT License.
+The license applies only to the material distributed in this repository.
